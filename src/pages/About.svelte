@@ -1,3 +1,13 @@
 <script></script>
 
-<h1>About us</h1>
+<div id="wrapper">
+
+    <h1>About us</h1>
+</div>
+
+<style>
+#wrapper {
+    margin-top: 15%;
+    padding: 6px;
+}
+</style>

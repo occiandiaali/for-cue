@@ -16,14 +16,17 @@
   function stopRecording() {
     recorder.stop();
     stream.getTracks().forEach(track => track.stop());
+   // saveVideo();
   }
 
   function saveVideo() {
-    const blob = new Blob(chunks, { type: 'video/webm' });
+    //const blob = new Blob(chunks, { type: 'video/webm' });
+    const blob = new Blob(chunks, { type: 'video/mp4' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'teleprompter-recording.webm';
+    //a.download = 'forcue-recording.webm';
+    a.download = 'forcue-recording.mp4';
     a.click();
   }
 </script>
@@ -31,25 +34,44 @@
 <div class="vid-div">
   <video bind:this={videoEl} autoplay playsinline></video>
 
-  <button id="startBtn" on:click={startRecording}>Start Recording</button>
-  <button id="stopBtn" on:click={stopRecording}>Stop & Download</button>
+  <div id="controls-div">
+    <div id="startBtn" role="button" tabindex="-1" on:keydown={startRecording} on:click={startRecording}>
+      <img src="/play-button.svg" alt="Play"  width="32px" height="32px"/>
+    </div>
+      <div id="stopBtn" role="button" tabindex="-1" on:keydown={stopRecording} on:click={stopRecording}>
+      <img src="/stop-button.svg" alt="Stop" width="30px" height="30px" />
+    </div>
+
+  </div>
+
+  <!-- <button id="startBtn" on:click={startRecording}>Start Recording</button>
+  <button id="stopBtn" on:click={stopRecording}>Stop & Download</button> -->
 </div>
 
 <style>
-button {
+/* button {
     padding: 6px;
     margin: 4px;
     cursor: pointer;
+} */
+#controls-div {
+  display: flex;
+  justify-content: space-around;
+  margin: 6px;
 }
 #startBtn {
-    background-color: green;
+    /* background-color: green;
     color: white;
-    border: none;
+    border: none; */
+    width: 68px;
+    cursor: pointer;
 }
 #stopBtn {
-    background-color: red;
+    /* background-color: red;
     color: white;
-    border: none;
+    border: none; */
+    width: 68px;
+    cursor: pointer;
 }
 .vid-div {
     display: flex;
@@ -59,7 +81,7 @@ button {
 }
   video {
     /* width: 100%; */
-    width: 35%;
+    width: 50%;
     height: 50%;
     border: 1px solid #444;
     margin-top: 0.1rem;

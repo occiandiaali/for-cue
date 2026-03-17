@@ -7,6 +7,10 @@
 
 <style>
   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     gap: 1rem;
     background: #222;
@@ -15,5 +19,9 @@
   a {
     color: white;
     text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-shadow: 2px 2px 5px red;
   }
 </style>

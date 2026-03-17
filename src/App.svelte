@@ -95,4 +95,18 @@
 </script>
 
 <Nav />
-<Router {routes} />
+<div class="main">
+  <Router {routes} />
+
+</div>
+
+<style>
+  .main {
+    margin-top: 8%;
+  }
+  @media screen and (max-width: 600px){
+    .main {
+      margin-top: 18%;
+    }
+  }
+</style>
